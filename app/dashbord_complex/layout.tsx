@@ -3,14 +3,18 @@ export default function DashbordComplexLayout(
     users,
     product_CRUD,
     revenusMetrique,
-    notification
+    notification,
+    login,
     }: {children: React.ReactNode;
         users:React.ReactNode;        product_CRUD:React.ReactNode;
         revenusMetrique:React.ReactNode;
         notification:React.ReactNode;
+        login:React.ReactNode;
     }
 ){
-    return (
+    const isLogedIn = true; // Replace with your actual login logic
+
+    return isLogedIn ? (
         <section
             style={{
                 width: "100%",
@@ -40,7 +44,19 @@ export default function DashbordComplexLayout(
                     <div style={{ display: "flex" }}>{revenusMetrique}</div>
                 </div>
                 <div style={{ display: "flex" }}>{notification}</div>
+                {/* <div style={{ display: "flex" }}>{login}</div> */}
             </div>
+        </section>
+    ) : (
+        <section
+            style={{
+                width: "100%",
+                minHeight: "calc(100vh - 32px)",
+                padding: "12px",
+                boxSizing: "border-box",
+            }}
+        >
+            <div style={{ display: "flex" }}>{login}</div>
         </section>
     );
 }
